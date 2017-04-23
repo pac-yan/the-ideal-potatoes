@@ -1,14 +1,17 @@
 /*
-Class Ticket
+  Class Ticket
 */
-public class Ticket{
+
+public class Ticket implements Comparable<Ticket> {
+    
     private int ID;
     private int VIP;
     private String problem;
     private boolean solved;
     private String name;
     private String solution;
-    public Ticket(int id, int vip, String prob, String nombre){
+    
+    public Ticket(int id, int vip, String prob, String nombre) {
 	ID = id;
 	VIP = vip;
 	problem = prob;
@@ -16,22 +19,39 @@ public class Ticket{
 	name = nombre;
 	solution = "";
     }
-    public int getID(){
+    
+    public int getID() {
 	return ID;
     }
-    public int getVIP(){
+    
+    public int getVIP() {
 	return VIP;
     }
-    public String getProblem(){
+    
+    public String getProblem() {
 	return problem;
     }
-    public boolean getSolved(){
+    
+    public boolean getSolved() {
 	return solved;
     }
-    public String getName(){
+    
+    public String getName() {
 	return name;
     }
-    public String getSolution(){
+    
+    public String getSolution() {
 	return solution;
     }
+
+    public int compareTo(Ticket blah) {
+	int blahVIP = blah.getVIP();
+	if (VIP > blahVIP) {
+	    return 1;
+	} else if (VIP < blahVIP) {
+	    return -1;
+	}
+	return 0;
+    }
+
 }
