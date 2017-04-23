@@ -17,7 +17,8 @@ public class HelpDesk{
 	ticketQ.add(x, x.VIP);
     }
     private void solveNext(){
-	if (SolvedTickets.contains(ticketQ.peekMin())){
+	Ticket beingSolved = ticketQ.peekMin();
+	if (SolvedTickets.contains(beingSolved)){
 	    solveOld();
 	}
 	else{
@@ -25,7 +26,7 @@ public class HelpDesk{
 	}
     }
     private void solveNew(){
-	ticket workOnNow = ticketQ.peekMin();
+	Ticket workOnNow = ticketQ.peekMin();
 	//Deal with problem here
 	ticketQ.removeMin();
 	SolvedTickets.add(workOnNow);
