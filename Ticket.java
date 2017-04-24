@@ -43,7 +43,11 @@ public class Ticket implements Comparable<Ticket> {
     public String getSolution() {
 	return solution;
     }
-
+    
+    public void setSolution(String sol) {
+	solution = sol;
+    }
+    
     public int compareTo(Ticket blah) {
 	int blahVIP = blah.getVIP();
 	if (VIP > blahVIP) {
