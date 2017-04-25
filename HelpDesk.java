@@ -3,6 +3,7 @@
 */
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class HelpDesk {
 
@@ -29,6 +30,12 @@ public class HelpDesk {
 	Ticket beingSolved = ticketQ.removeMin();
 	beingSolved.setSolution("Turn it off and on again");
 	solvedTickets.add(beingSolved);
+	System.out.println("Ticket #" + beingSolved.getID() + " has been solved");
+	System.out.println("    Solution: " + beingSolved.getSolution());
+    }
+
+    public boolean allSolved() {
+	return ticketQ.isEmpty();
     }
    
     /*
@@ -53,5 +60,36 @@ public class HelpDesk {
 	
     }
     */
+
+    public static void main(String[] args) {
+	HelpDesk halp = new HelpDesk();
+	System.out.println("Welcome to the help desk!");
+	System.out.println("Start queuing tickets...");
+	Scanner sc = new Scanner(System.in);
+	String more = "";
+
+	while (!more.equals("n")) {
+	    System.out.print("Enter name: ");
+	    String name = sc.next();
+	    System.out.print("What's the problem? :");
+	    String prob = sc.next();
+	    System.out.print("What VIP level? :");
+	    int vip = sc.nextInt();
+	    halp.createTicket(name, vip, prob);
+	    System.out.println("Any more tickets? (y/n):");
+	    more = sc.next();
+	    while (!more.equals("n") && !more.equals("y")) {
+		System.out.println("Enter y or n (not " + more + ")");
+		more = sc.next();
+	    }
+	}
+
+	System.out.println();
+	System.out.println("Now solving tickets...");
+	while (!halp.allSolved()) {
+	    halp.solve();
+	}
+	System.out.println("Done with all tickets. Enjoy or day!");
+    }
     
 }
